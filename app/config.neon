@@ -13,7 +13,6 @@ php:
 
 nette:
 	application:
-		errorPresenter: Error
 		mapping:
 			*: App\*Module\Presenters\*Presenter
 
@@ -22,6 +21,5 @@ nette:
 
 
 services:
-	- App\Model\UserManager
 	- App\RouterFactory
 	router: @App\RouterFactory::createRouter
