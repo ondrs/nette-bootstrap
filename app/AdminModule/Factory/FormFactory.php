@@ -52,18 +52,18 @@ class FormFactory
     {
         $className = '\\App\\AdminModule\\Form\\' . $name;
 
-        if( !class_exists($className) ) {
+        if (!class_exists($className)) {
             throw new FormNotExistsException("Form class $className does not exist!");
         }
 
-        $form = new $className($selection);
+        $form = new $className($this->db, $selection);
 
         $presenter = $this->presenter;
-        $form->onSuccess[] = function($form) use($presenter) {
+        $form->onSuccess[] = function ($form) use ($presenter) {
 
             $form->process();
 
-            if($form->valid && !$form->hasErrors() ) {
+            if ($form->valid && !$form->hasErrors()) {
                 $presenter->flashMessage('Úspěšně uloženo', 'success');
                 $presenter->redirect('this');
             }
@@ -74,7 +74,6 @@ class FormFactory
     }
 
 }
-
 
 
 class FormNotExistsException extends Exception

@@ -16,11 +16,11 @@ use Nette\Database\Table\Selection;
 abstract class BaseGrid extends Grid
 {
 
+    /** @var \Nette\Database\Context */
+    protected $db;
+
     /** @var \Nette\Database\Table\Selection  */
     protected $selection;
-
-	/** @var \Nette\Database\Context */
-	protected $db;
 
 
     /**

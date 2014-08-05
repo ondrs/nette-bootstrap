@@ -83,23 +83,21 @@ abstract class BasePresenter extends \App\Presenters\BasePresenter
 
         $templatesDir = __DIR__ . '/../templates/';
 
-        $templateCandidates = array(
+        $paths = array(
             $templatesDir . $presenter . '/' . $this->view . '.latte',
             $templatesDir . $presenter . '.' . $this->view . '.latte',
         );
 
-        $useDefaultTemplate = TRUE;
+        $useDefault = TRUE;
 
-        foreach ($templateCandidates as $file) {
-
+        foreach ($paths as $file) {
             if (is_file($file)) {
-                $useDefaultTemplate = FALSE;
+                $useDefault = FALSE;
                 break;
             }
-
         }
 
-        if ($useDefaultTemplate) {
+        if ($useDefault) {
             $this->template->setFile($templatesDir . '_' . $this->view . '.latte');
         }
 
