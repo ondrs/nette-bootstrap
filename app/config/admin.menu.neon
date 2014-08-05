@@ -1,4 +1,4 @@
 'Domů':
     link: ':Admin:Default:'
     current: ':Admin:Default:*'
-    icon: 'icon-home'
+    icon: 'home'

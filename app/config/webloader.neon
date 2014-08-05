@@ -33,7 +33,6 @@ webloader:
                 - %wwwDir%/bower_components/unicorn-admin/html/js/jquery.icheck.min.js
                 - %wwwDir%/bower_components/unicorn-admin/html/js/jquery.flot.min.js
                 - %wwwDir%/bower_components/unicorn-admin/html/js/jquery.sparkline.min.js
-                - %wwwDir%/bower_components/unicorn-admin/html/js/jquery.jpanelmenu.min.js
                 - %wwwDir%/bower_components/unicorn-admin/html/js/jquery.nicescroll.min.js
 
                 - %wwwDir%/bower_components/unicorn-admin/html/js/unicorn.form_common.js
