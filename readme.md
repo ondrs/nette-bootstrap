@@ -15,7 +15,7 @@ Installing
 The best way to install Sandbox is using Composer. If you don't have Composer yet, download
 it following [the instructions](http://doc.nette.org/composer). Then use command:
 
-		composer create-project ondrs/nette-bootstrap my-app
+		composer create-project ondrs/nette-bootstrap my-app dev-master
 		cd my-app
 		bower install
 
