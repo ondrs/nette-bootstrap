@@ -12,6 +12,7 @@ webloader:
         front:
             files:
                 - %wwwDir%/bower_components/normalize-css/normalize.css
+                - %wwwDir%/bower_components/less-elements/elements.less
                 - %wwwDir%/bower_components/ondrs-common.css/common.css
                 - %wwwDir%/styles/main.less
             filters:
