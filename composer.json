@@ -27,6 +27,7 @@
 	"require-dev": {
 		"nette/tester": "~1.0",
     "jakub-onderka/php-parallel-lint": "0.*",
+    "jakub-onderka/php-console-highlighter": "0.*",
     "ondrs/ftp-deployment": "dev-master"
 	},
 	"minimum-stability": "stable"
