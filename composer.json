@@ -25,7 +25,9 @@
     "nextras/forms": "1.4.*@dev"
 	},
 	"require-dev": {
-		"nette/tester": "~1.0"
+		"nette/tester": "~1.0",
+    "jakub-onderka/php-parallel-lint": "0.*",
+    "ondrs/ftp-deployment": "dev-master"
 	},
 	"minimum-stability": "stable"
 }
