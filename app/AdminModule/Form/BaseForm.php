@@ -36,14 +36,18 @@ abstract class BaseForm extends Form
             ->getControlPrototype()
             ->class('btn btn-primary');
 
-        $this->getElementPrototype()
-            ->class('form-horizontal');
-
+        // setup form rendering
         $renderer = $this->getRenderer();
-        $renderer->wrappers['controls']['container'] = 'div class="widget-content nopadding"';
-        $renderer->wrappers['pair']['container'] = 'div class="control-group"';
-        $renderer->wrappers['label']['container'] = 'div class="control-label"';
-        $renderer->wrappers['control']['container'] = 'div class="controls"';
+        $renderer->wrappers['controls']['container'] = NULL;
+        $renderer->wrappers['pair']['container'] = 'div class=form-group';
+        $renderer->wrappers['pair']['.error'] = 'has-error';
+        $renderer->wrappers['control']['container'] = 'div class=col-sm-9';
+        $renderer->wrappers['label']['container'] = 'div class="col-sm-3 control-label"';
+        $renderer->wrappers['control']['description'] = 'span class=help-block';
+        $renderer->wrappers['control']['errorcontainer'] = 'span class=help-block';
+
+        // make form and controls compatible with Twitter Bootstrap
+        $this->getElementPrototype()->class('form-horizontal');
 
     }
 
