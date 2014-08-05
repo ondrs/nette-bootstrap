@@ -2,8 +2,7 @@
 
 namespace App\Presenters;
 
-use Nette,
-	App\Model;
+use Nette;
 
 
 /**
@@ -11,5 +10,8 @@ use Nette,
  */
 abstract class BasePresenter extends Nette\Application\UI\Presenter
 {
+
+    /** @var \Nette\Database\Context @inject */
+    public $db;
 
 }

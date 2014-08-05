@@ -1,0 +1,14 @@
+{
+  "name": "sandbox",
+  "version": "0.0.0",
+  "dependencies": {
+    "normalize-css": "~3.0.1",
+    "ondrs-common.css": "latest",
+    "nette.ajax.js": "git://github.com/vojtech-dobes/nette.ajax.js",
+    "jquery": "~1.11.0",
+    "grido": "~1.0.4",
+    "bootstrap": "~3.2.0",
+    "unicorn-admin": "https://ondrs@bitbucket.org/ondrs/unicorn-admin.git",
+    "tinymce": "~4.1.3"
+  }
+}

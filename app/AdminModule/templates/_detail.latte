@@ -1,0 +1,49 @@
+{var $title = 'Vytvoření'}
+
+{block #content}
+
+<div class="row-fluid">
+    <div class="span12">
+        <div class="widget-box">
+
+            <div class="widget-title">
+                <span class="icon">
+                    <i class="icon-file"></i>
+                </span>
+                <h5>{$title}</h5>
+            </div>
+
+            {control form}
+
+        </div>
+    </div>
+</div>
+
+<div class="row-fluid">
+    <div class="span12">
+        <div class="widget-box">
+
+            <div class="widget-title">
+                <span class="icon">
+                    <i class="icon-picture"></i>
+                </span>
+                <h5>Multimédia</h5>
+            </div>
+            <div class="widget-content">{control dropzone}</div>
+
+        </div>
+    </div>
+</div>
+
+
+{define #script}
+
+<link rel="stylesheet" href="{$basePath}/assets/unicorn/css/select2.css">
+<link rel="stylesheet" href="{$basePath}/assets/unicorn/css/uniform.css">
+
+<script src="{$basePath}/assets/unicorn/js/bootstrap-colorpicker.js"></script>
+<script src="{$basePath}/assets/unicorn/js/jquery.uniform.js"></script>
+<script src="{$basePath}/assets/unicorn/js/select2.min.js"></script>
+<script src="{$basePath}/assets/unicorn/js/unicorn.form_common.js"></script>
+
+{/define}

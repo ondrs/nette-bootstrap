@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Model;
+namespace App\FrontModule\Model;
 
 use Nette,
 	Nette\Utils\Strings,
@@ -30,11 +30,12 @@ class UserManager extends Nette\Object implements Nette\Security\IAuthenticator
 	}
 
 
-	/**
-	 * Performs an authentication.
-	 * @return Nette\Security\Identity
-	 * @throws Nette\Security\AuthenticationException
-	 */
+    /**
+     * Performs an authentication.
+     * @param array $credentials
+     * @throws \Nette\Security\AuthenticationException
+     * @return Nette\Security\Identity
+     */
 	public function authenticate(array $credentials)
 	{
 		list($username, $password) = $credentials;

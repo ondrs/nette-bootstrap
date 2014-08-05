@@ -1,0 +1,64 @@
+webloader:
+    css:
+        admin:
+            files:
+                -  %wwwDir%/styles/admin.css
+            filters:
+                - @wlCssFilter
+                - ondrs\WebLoaderFilters\Filters::cssMin
+            fileFilters:
+                - @lessFilter
+
+        front:
+            files:
+                - %wwwDir%/bower_components/normalize-css/normalize.css
+                - %wwwDir%/bower_components/ondrs-common.css/common.css
+                - %wwwDir%/styles/main.less
+            filters:
+                - ondrs\WebLoaderFilters\Filters::cssMin
+            fileFilters:
+                - @lessFilter
+    js:
+        admin:
+            files:
+                - %wwwDir%/bower_components/unicorn-admin/html/js/excanvas.min.js
+                - %wwwDir%/bower_components/unicorn-admin/html/js/jquery.min.js
+                - %wwwDir%/bower_components/unicorn-admin/html/js/jquery-ui.custom.js
+                - %wwwDir%/bower_components/unicorn-admin/html/js/bootstrap.min.js
+                - %wwwDir%/bower_components/unicorn-admin/html/js/bootstrap-colorpicker.js
+                - %wwwDir%/bower_components/unicorn-admin/html/js/bootstrap-datepicker.js
+                - %wwwDir%/bower_components/unicorn-admin/html/js/bootbox.min.js
+                - %wwwDir%/bower_components/unicorn-admin/html/js/select2.min.js
+
+                - %wwwDir%/bower_components/unicorn-admin/html/js/jquery.icheck.min.js
+                - %wwwDir%/bower_components/unicorn-admin/html/js/jquery.flot.min.js
+                - %wwwDir%/bower_components/unicorn-admin/html/js/jquery.sparkline.min.js
+                - %wwwDir%/bower_components/unicorn-admin/html/js/jquery.jpanelmenu.min.js
+                - %wwwDir%/bower_components/unicorn-admin/html/js/jquery.nicescroll.min.js
+
+                - %wwwDir%/bower_components/unicorn-admin/html/js/unicorn.form_common.js
+                - %wwwDir%/bower_components/unicorn-admin/html/js/unicorn.js
+
+                - %wwwDir%/bower_components/tinymce/tinymce.min.js
+
+                - %appDir%/../vendor/o5/grido/client-side/grido.js
+                - %appDir%/../vendor/nette/forms/src/assets/netteForms.js
+
+                - admin/main.js
+            filters:
+                #- ondrs\WebLoaderFilters\Filters::jsMin
+
+        front:
+            files:
+                - %wwwDir%/bower_components/jquery/dist/jquery.js
+                - %wwwDir%/bower_components/nette.ajax.js/nette.ajax.js
+                - %wwwDir%/bower_components/nette.ajax.js/history/history.ajax.js
+                - %wwwDir%/bower_components/nette.ajax.js/extensions/scrollTo.ajax.js
+                - %appDir%/../vendor/nette/forms/src/assets/netteForms.js
+                - front/main.js
+            filters:
+                - ondrs\WebLoaderFilters\Filters::jsMin
+
+services:
+    wlCssFilter: WebLoader\Filter\CssUrlsFilter(%wwwDir%)
+    lessFilter: WebLoader\Filter\LessFilter

@@ -4,23 +4,48 @@
 # If you don't protect this directory from direct web access, anybody will be able to see your passwords.
 # http://nette.org/security-warning
 #
+includes:
+  - webloader.neon
+
 parameters:
 
 
 php:
-	date.timezone: Europe/Prague
+    date.timezone: Europe/Prague
+    zlib.output_compression: yes
 
 
 nette:
-	application:
-		errorPresenter: Error
-		mapping:
-			*: App\*Module\Presenters\*Presenter
+    application:
+        errorPresenter: Error
+        mapping:
+            *: App\*Module\Presenters\*Presenter
 
-	session:
-		expiration: 14 days
+    session:
+        expiration: 14 days
 
+    database:
+        dsn: 'mysql:host=%database.host%;dbname=%database.database%'
+        user: %database.user%
+        password: %database.password%
+        options:
+            lazy: yes
+
+    security:
+        users:
+            sandbox: sandbox
+
+
+extensions:
+    webloader: WebLoader\Nette\Extension
 
 services:
-	- App\Model\UserManager
-	router: App\RouterFactory()::createRouter
+    - App\RouterFactory
+    router: @App\RouterFactory::createRouter
+
+    - App\AdminModule\Factory\GridFactory
+    - App\AdminModule\Factory\FormFactory
+    - App\AdminModule\Model\MenuGenerator(%appDir%/config/admin.menu.neon)
+
+
+    #- App\FrontModule\Model\UserManager
