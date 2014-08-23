@@ -48,4 +48,4 @@ services:
     - App\AdminModule\Model\MenuGenerator(%appDir%/config/admin.menu.neon)
 
 
-    #- App\FrontModule\Model\UserManager
+    #- App\Model\UserManager
