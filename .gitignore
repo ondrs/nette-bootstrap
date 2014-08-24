@@ -2,6 +2,8 @@ log/*
 temp/*
 vendor/*
 www/bower_components/*
+*.bak
+*.log
 
 .DS_Store
 !.gitignore
