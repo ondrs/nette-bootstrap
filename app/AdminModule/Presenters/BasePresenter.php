@@ -43,7 +43,8 @@ abstract class BasePresenter extends \App\Presenters\BasePresenter
     {
         parent::startup();
 
-        if (!$this->user->isLoggedIn()) {
+        if (!$this->user->isLoggedIn() && !$this->user->isInRole('admin')) {
+            $this->flashMessage('Ke vstupu do administrace nemáte oprávnění!', 'danger');
             $this->redirect('Sign:in');
         }
 
