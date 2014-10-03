@@ -1,0 +1,198 @@
+<div class="dropzone"></div>
+
+<div class="clearfix"></div>
+
+<div class="dropzone-images clearfix" n:snippet="images">
+
+    <div n:foreach="$images as $f" class="dropzone-image" data-filename="{$f[filename]}">
+
+        <div class="dropzone-toolbox">
+            <a href="#" data-filename="{$f[filename]}" class="do-select-image" title="Použít">
+                <i class="fa fa-check"></i>
+            </a>
+
+            <br>
+
+            <a href="#" data-thumb-url="{$baseUrl}{$f[path]}/800_{$f[filename]}" class="do-insert-image"
+               title="Vložit obrázek">
+                <i class="fa fa-picture-o"></i>
+            </a>
+
+            <br>
+
+            <a n:href="delete!, $f[filename]" class="do-delete-file" data-filename="{$f[filename]}" title="Smazat">
+                <i class="fa fa-times"></i>
+            </a>
+        </div>
+
+        <img src="{$baseUrl}{$f[path]}/250_{$f[filename]}" style="height: 140px;">
+    </div>
+
+</div>
+
+
+{snippet files}
+    <table class="dropzone-files table table-bordered table-striped table-hover" n:if="count($files)">
+
+        <tr>
+            <th>Soubor</th>
+            <th>URL</th>
+            <th>Smazat</th>
+        </tr>
+
+        <tr n:foreach="$files as $f">
+            <td>
+                <a href="{$baseUrl}{$f[path]}/{$f[filename]}">
+                    {$f[filename]}
+                </a>
+            </td>
+            <td>
+                <i>{$baseUrl}{$f[path]}/{$f[filename]}</i>
+            </td>
+            <td class="text-center">
+                <a n:href="delete!, $f[filename]" class="do-delete-file" data-filename="{$f[filename]}" title="Smazat">
+                    <i class="fa fa-times"></i>
+                </a>
+            </td>
+        </tr>
+
+    </table>
+{/snippet}
+
+<style>
+    .dropzone-images {
+        margin: 20px auto;
+    }
+
+    .dropzone-image {
+        display: inline;
+        margin: 5px;
+        position: relative;
+    }
+
+    .dropzone-image > img {
+        padding: 4px;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+
+    .dropzone-image.selected img {
+        outline: 3px solid #000 !important;
+    }
+
+    .dropzone-toolbox {
+        position: absolute;
+        top: -56px;
+        left: 0;
+        width: 35px;
+        background: rgba(0, 0, 0, 1);
+        color: #fff;
+        padding: 5px 10px;
+        visibility: hidden;
+        border-radius: 0 10px 10px 0;
+    }
+
+    .dropzone-toolbox a {
+        color: #fff;
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .dropzone-toolbox a:last-child {
+        margin-bottom: 0;
+    }
+
+    .dropzone-image:hover .dropzone-toolbox {
+        visibility: visible;
+    }
+
+</style>
+
+<script>
+
+    $(function () {
+        'use strict';
+
+
+        function selectImage($element) {
+
+            $('.dropzone-image').removeClass('selected');
+            $element.parent().parent().addClass('selected');
+
+            $('input[name="image"]').val($element.data('filename'));
+        }
+
+
+        function insertImage($element) {
+            if (tinyMCE) {
+                tinyMCE.execCommand('mceInsertRawHTML', false, '<img src="' + $element.data('thumb-url') + '" />');
+            }
+
+        }
+
+
+        /**
+         *
+         * @param response
+         */
+        function refresh(response) {
+
+            if (response && response.snippets) {
+                $.each(response.snippets, function (id, html) {
+                    $('#' + id).html(html);
+                });
+            }
+
+            var selected = $('input[name="image"]').val();
+            $('.dropzone-image[data-filename="' + selected + '"]').addClass('selected');
+
+
+            $('.do-delete-file').click(function (e) {
+                e.preventDefault();
+                var filename = $(this).data('filename');
+
+                if (!window.confirm('Opravdu chcete smazat soubor ' + filename + '?')) {
+                    return;
+                }
+
+                $.get({link delete!}, {
+                    'dropzone-filename': filename
+                }, refresh);
+            });
+
+            $('.do-show-url').click(function (e) {
+                e.preventDefault();
+                window.prompt('URL souboru', $(this).data('url'));
+            });
+
+            $('.do-select-image').click(function (e) {
+                e.preventDefault();
+                selectImage($(this));
+            });
+
+            $('.do-insert-image').click(function (e) {
+                e.preventDefault();
+                insertImage($(this));
+            });
+
+        }
+
+        refresh();
+
+
+        $('.dropzone').dropzone({
+            url: {link upload!},
+            uploadMultiple: true,
+            parallelUploads: 6,
+            init: function () {
+
+                this.on('successmultiple', function (file, response) {
+                    refresh(response);
+                });
+            }
+
+        });
+    });
+</script>
+

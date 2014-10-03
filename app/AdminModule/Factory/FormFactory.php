@@ -45,10 +45,11 @@ class FormFactory
     /**
      * @param $name
      * @param Selection $selection
+     * @param bool $registerCallback
      * @return mixed
      * @throws FormNotExistsException
      */
-    public function create($name, Selection $selection)
+    public function create($name, Selection $selection, $registerCallback = TRUE)
     {
         $className = '\\App\\AdminModule\\Form\\' . $name;
 
@@ -58,17 +59,21 @@ class FormFactory
 
         $form = new $className($this->db, $selection);
 
-        $presenter = $this->presenter;
-        $form->onSuccess[] = function ($form) use ($presenter) {
+        if($registerCallback) {
 
-            $form->process();
+            $form->onSuccess[] = function ($form)  {
 
-            if ($form->valid && !$form->hasErrors()) {
-                $presenter->flashMessage('Úspěšně uloženo', 'success');
-                $presenter->redirect('this');
-            }
+                $form->process();
 
-        };
+                if ($form->valid && !$form->hasErrors()) {
+                    $this->presenter->flashMessage('Úspěšně uloženo', 'success');
+                    $this->presenter->redirect('this');
+                }
+
+            };
+        }
+
+
 
         return $form;
     }

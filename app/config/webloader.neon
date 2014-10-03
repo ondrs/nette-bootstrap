@@ -3,6 +3,7 @@ webloader:
         admin:
             files:
                 -  %wwwDir%/styles/admin.css
+                - %appDir%/../vendor/o5/grido/client-side/grido.css
             filters:
                 - @wlCssFilter
                 - ondrs\WebLoaderFilters\Filters::cssMin
@@ -13,6 +14,8 @@ webloader:
             files:
                 - %wwwDir%/bower_components/normalize-css/normalize.css
                 - %wwwDir%/bower_components/ondrs-common.css/common.css
+                - %wwwDir%/bower_components/bootstrap/dist/css/bootstrap.css    # TODO: include just necessary less components
+                - %wwwDir%/bower_components/dropzone/downloads/css/dropzone.css
                 - %wwwDir%/styles/main.less
             filters:
                 - ondrs\WebLoaderFilters\Filters::cssMin
@@ -38,7 +41,7 @@ webloader:
                 - %wwwDir%/bower_components/unicorn-admin/html/js/unicorn.form_common.js
                 - %wwwDir%/bower_components/unicorn-admin/html/js/unicorn.js
 
-                - %wwwDir%/bower_components/tinymce/tinymce.min.js
+                - %wwwDir%/bower_components/dropzone/downloads/dropzone.min.js
 
                 - %appDir%/../vendor/o5/grido/client-side/grido.js
                 - %appDir%/../vendor/nette/forms/src/assets/netteForms.js

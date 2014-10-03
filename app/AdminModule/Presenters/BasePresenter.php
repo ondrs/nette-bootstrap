@@ -29,11 +29,17 @@ abstract class BasePresenter extends \App\Presenters\BasePresenter
     /** @var \App\AdminModule\Model\MenuGenerator @inject */
     public $menuGenerator;
 
-    /** @var string */
-    public $title;
+    /** @var \ondrs\UploadManager\Upload @inject */
+    public $upload;
+
+    /** @var \App\AdminModule\Components\Dropzone\Control @inject */
+    public $dropzoneControl;
 
     /** @var string */
-    public $tableName;
+    protected $presenterTitle;
+
+    /** @var string */
+    protected $tableName;
 
 
     /**
@@ -43,30 +49,33 @@ abstract class BasePresenter extends \App\Presenters\BasePresenter
     {
         parent::startup();
 
-        if (!$this->user->isLoggedIn() && !$this->user->isInRole('admin')) {
+        if (!$this->user->isLoggedIn() || !$this->user->isInRole('admin')) {
             $this->flashMessage('Ke vstupu do administrace nemáte oprávnění!', 'danger');
             $this->redirect('Sign:in');
         }
 
         $explode = explode(':', $this->presenter->name);
         $pieces = preg_split('/(?=[A-Z])/', lcfirst(end($explode)));
-        $presenterName = strtolower(implode("_", $pieces));
+        $presenterName = strtolower(implode('_', $pieces));
 
         $this->tableName = strtolower($presenterName);
+
+        $this->formFactory->setPresenter($this);
+        $this->gridFactory->setPresenter($this);
     }
 
 
-
-
-
-
-    /** @return CssLoader */
+    /**
+     * @return CssLoader
+     */
     protected function createComponentCss()
     {
         return $this->webLoader->createCssLoader('admin');
     }
 
-    /** @return JavaScriptLoader */
+    /**
+     * @return JavaScriptLoader
+     */
     protected function createComponentJs()
     {
         return $this->webLoader->createJavaScriptLoader('admin');
@@ -103,7 +112,7 @@ abstract class BasePresenter extends \App\Presenters\BasePresenter
         }
 
         $this->template->mainMenu = $this->menuGenerator->createMenu();
-        $this->template->presenterTitle = $this->title;
+        $this->template->presenterTitle = $this->presenterTitle;
     }
 
 
@@ -115,7 +124,8 @@ abstract class BasePresenter extends \App\Presenters\BasePresenter
         $result = $this->db->query('SHOW TABLE STATUS LIKE ?', $this->tableName)
             ->fetch();
 
-        $lastId = $result->Auto_increment;
+        $dir = $this->tableName . '/' . $result->Auto_increment;
+        $this->dropzoneControl->setDir($dir);
 
         $this->setView('detail');
     }
@@ -137,6 +147,9 @@ abstract class BasePresenter extends \App\Presenters\BasePresenter
         $this['form']->addHidden('id', $id);
         $this['form']->setDefaults($row);
 
+        $dir = $this->tableName . '/' . $id;
+        $this->dropzoneControl->setDir($dir);
+
         $this->setView('detail');
     }
 
@@ -154,13 +167,13 @@ abstract class BasePresenter extends \App\Presenters\BasePresenter
                 ->delete();
 
             $this->flashMessage('Úspěšně smazáno');
+            $this->redirect('this');
 
         } catch (\PDOException $e) {
             $this->flashMessage($e->getMessage(), 'error');
             dump($e);
             Debugger::log($e);
         }
-
     }
 
 
@@ -180,12 +193,22 @@ abstract class BasePresenter extends \App\Presenters\BasePresenter
                 ));
 
             $this->flashMessage('Úspěšně upraveno', 'success');
+            $this->redirect('this');
 
         } catch (\PDOException $e) {
             $this->flashMessage($e->getMessage(), 'error');
             dump($e);
             Debugger::log($e);
         }
+    }
+
+
+    /**
+     * @return \App\AdminModule\Components\Dropzone\Control
+     */
+    protected function createComponentDropzone()
+    {
+        return $this->dropzoneControl;
     }
 
 

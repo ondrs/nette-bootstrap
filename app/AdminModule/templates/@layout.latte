@@ -6,7 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
     {control css}
+
+    {block prejs}{/block}
     {control js}
+    <script src="{$basePath}/bower_components/tinymce/tinymce.min.js"></script>
+    {block postjs}{/block}
 
 </head>
 <body data-color="grey">
@@ -24,14 +28,21 @@
         <ul class="btn-group">
 
             <li class="btn">
-                <a title="" href="#">
+                <a title="Zobrazit web" n:href=":Front:Homepage:" target="_blank">
+                    <i class="fa fa-arrows-alt"></i>
+                    <span class="text">Zobrazit web</span>
+                </a>
+            </li>
+
+            <li class="btn">
+                <a title="Nastavení" href="#">
                     <i class="fa fa-cog"></i>
                     <span class="text">Nastavení</span>
                 </a>
             </li>
 
             <li class="btn">
-                <a title="" n:href="Sign:out">
+                <a title="Odhlásit se" n:href="Sign:out">
                     <i class="fa fa-share"></i>
                     <span class="text">Odhlásit se</span>
                 </a>
@@ -73,7 +84,7 @@
 
     <div id="content">
         <div id="content-header" class="mini">
-            <h1>{$title}</h1>
+            <h1>{$presenterTitle}</h1>
 
         </div>
         <div id="breadcrumb">
@@ -81,9 +92,18 @@
                 <i class="icon-home"></i>
                 Domů
             </a>
+            <a n:href="default" n:ifset="$presenterTitle">{$presenterTitle}</a>
             <a href="#" class="current">
-                {$title}
+                {$viewTitle}
             </a>
+        </div>
+
+        <div n:snippet="flash" n:ifset="$flashes" class="container-fluid">
+            <div class="row" n:foreach="$flashes as $flash">
+                <div class="col-md-12 alert alert-{$flash->type}" role="alert">
+                    {$flash->message}
+                </div>
+            </div>
         </div>
 
         {include content}
@@ -92,7 +112,6 @@
     <div class="row">
         <div id="footer" class="col-xs-12">
             2014 &copy; <a href="http://www.ondraplsek.cz" target="_blank">Ondřej Plšek</a><br>
-            2012 - 2013 &copy; Unicorn Admin. Brought to you by <a href="https://wrapbootstrap.com/user/diablo9983">diablo9983</a>
         </div>
     </div>
 </div>

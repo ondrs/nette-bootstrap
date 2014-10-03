@@ -1,6 +1,6 @@
 <?php
 
-namespace App\AdminModule;
+namespace App\AdminModule\Form;
 
 
 use Nette\Application\UI\Form;
@@ -67,10 +67,10 @@ abstract class BaseForm extends Form
 
         try {
 
-            if (isset($values['id'])) {
+            if (isset($values->id)) {
 
-                $id = $values['id'];
-                unset($values['id']);
+                $id = $values->id;
+                unset($values->id);
 
                 $this->selection->wherePrimary($id)->update($values);
 

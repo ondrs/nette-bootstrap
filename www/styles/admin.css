@@ -7,3 +7,6 @@
 @import "../bower_components/unicorn-admin/html/css/jquery-ui.css";
 @import "../bower_components/unicorn-admin/html/css/select2.css";
 @import "../bower_components/unicorn-admin/html/css/unicorn.css";
+
+@import "../bower_components/dropzone/downloads/css/basic.css";
+@import "../bower_components/dropzone/downloads/css/dropzone.css";

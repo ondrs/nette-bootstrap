@@ -81,17 +81,14 @@ class GridFactory
 
                 $button = Html::el('a')
                     ->href($presenter->link('hide!', $row->id))
-                    ->title('Editovat');
-
+                    ->title('Skrýt');
 
                 if (isset($row->visible)) {
+                    $icon->class('fa fa-eye');
                     if ($row->visible) {
-                        $icon->class('icon-eye-close');
-                        $button->class('btn btn-mini');
-
+                        $button->class('btn btn-default btn-xs btn-mini');
                     } else {
-                        $icon->class('icon-eye-open icon-white');
-                        $button->class('btn btn-mini btn-inverse');
+                        $button->class('btn btn-danger btn-xs btn-mini');
                     }
                     $button->setHtml($icon);
 
@@ -99,13 +96,12 @@ class GridFactory
                     $button->style('display: none');
                 }
 
-
                 return $button;
             });
 
 
         $grid->addActionHref('delete', '', 'delete!')
-            ->setIcon('trash')
+            ->setIcon('times')
             ->setConfirm('Opravdu smazat?');
 
 

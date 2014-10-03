@@ -22,12 +22,12 @@
     "o5/grido": "~2.0",
     "janmarek/webLoader": ">= 2.2.0",
     "ondrs/webloader-filters": "dev-master",
+    "ondrs/upload-manager": "dev-master",
     "nextras/forms": "1.4.*@dev"
 	},
 	"require-dev": {
 		"nette/tester": "~1.0",
     "jakub-onderka/php-parallel-lint": "0.*",
-    "jakub-onderka/php-console-highlighter": "0.*",
     "ondrs/ftp-deployment": "dev-master"
 	},
 	"minimum-stability": "stable"
