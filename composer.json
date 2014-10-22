@@ -17,7 +17,7 @@
   "require": {
     "php": ">= 5.4.0",
     "nette/nette": "2.3.*@dev",
-    "dg/adminer-custom": "~1.0",
+    "dg/adminer-custom": "~1.5",
     "leafo/lessphp": "0.4.*@dev",
     "o5/grido": "~2.0",
     "janmarek/webloader": "2.3.*@dev",
