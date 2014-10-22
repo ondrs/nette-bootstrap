@@ -21,20 +21,4 @@ $configurator->addConfig(__DIR__ . '/config/config.local.neon');
 
 $container = $configurator->createContainer();
 
-Container::extensionMethod('addOptionList', function (Container $container, $name, $label = NULL, array $items = NULL) {
-    return $container[$name] = new Controls\OptionList($label, $items);
-});
-Container::extensionMethod('addMultiOptionList', function (Container $container, $name, $label = NULL, array $items = NULL) {
-    return $container[$name] = new Controls\MultiOptionList($label, $items);
-});
-Container::extensionMethod('addDatePicker', function (Container $container, $name, $label = NULL) {
-    return $container[$name] = new Controls\DatePicker($label);
-});
-Container::extensionMethod('addDateTimePicker', function (Container $container, $name, $label = NULL) {
-    return $container[$name] = new Controls\DateTimePicker($label);
-});
-Container::extensionMethod('addTypeahead', function(Container $container, $name, $label = NULL, $callback = NULL) {
-    return $container[$name] = new Controls\Typeahead($label, $callback);
-});
-
 return $container;

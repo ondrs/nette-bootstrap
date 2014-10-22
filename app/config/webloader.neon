@@ -2,7 +2,7 @@ webloader:
     css:
         admin:
             files:
-                -  %wwwDir%/styles/admin.css
+                - %wwwDir%/styles/admin.css
                 - %appDir%/../vendor/o5/grido/client-side/grido.css
             filters:
                 - @wlCssFilter
@@ -12,7 +12,6 @@ webloader:
 
         front:
             files:
-                - %wwwDir%/bower_components/normalize-css/normalize.css
                 - %wwwDir%/bower_components/ondrs-common.css/common.css
                 - %wwwDir%/bower_components/bootstrap/dist/css/bootstrap.css    # TODO: include just necessary less components
                 - %wwwDir%/bower_components/dropzone/downloads/css/dropzone.css

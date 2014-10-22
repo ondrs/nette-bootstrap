@@ -1,34 +1,33 @@
 {
-	"name": "ondrs/nette-bootstrap",
-	"description": "The sandbox is a pre-packaged Nette Framework project, basic configured structure for your application.",
-	"homepage": "http://nette.org",
-	"type": "project",
-	"license": ["Unlicense"],
-	"authors": [
-		{
-			"name": "David Grudl",
-			"homepage": "http://davidgrudl.com"
-		},
-		{
-			"name": "Nette Community",
-			"homepage": "http://nette.org/contributors"
-		}
-	],
-	"require": {
-		"php": ">= 5.4.0",
-		"nette/nette": "~2.2.0",
-		"dg/adminer-custom": "~1.0",
-    "leafo/lessphp": "dev-master",
+  "name": "ondrs/nette-bootstrap",
+  "description": "The sandbox is a pre-packaged Nette Framework project, basic configured structure for your application.",
+  "homepage": "http://nette.org",
+  "type": "project",
+  "license": ["Unlicense"],
+  "authors": [
+    {
+      "name": "David Grudl",
+      "homepage": "http://davidgrudl.com"
+    },
+    {
+      "name": "Nette Community",
+      "homepage": "http://nette.org/contributors"
+    }
+  ],
+  "require": {
+    "php": ">= 5.4.0",
+    "nette/nette": "2.3.*@dev",
+    "dg/adminer-custom": "~1.0",
+    "leafo/lessphp": "0.4.*@dev",
     "o5/grido": "~2.0",
-    "janmarek/webLoader": ">= 2.2.0",
+    "janmarek/webloader": "2.3.*@dev",
     "ondrs/webloader-filters": "dev-master",
-    "ondrs/upload-manager": "dev-master",
-    "nextras/forms": "1.4.*@dev"
-	},
-	"require-dev": {
-		"nette/tester": "~1.0",
-    "jakub-onderka/php-parallel-lint": "0.*",
+    "ondrs/upload-manager": "dev-master"
+  },
+  "require-dev": {
+    "nette/tester": "1.3.*@dev",
+    "jakub-onderka/php-parallel-lint": "0.8",
     "ondrs/ftp-deployment": "dev-master"
-	},
-	"minimum-stability": "stable"
+  },
+  "minimum-stability": "stable"
 }

@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "b96d6ed8255a0b49fc1fa35d42281d6e",
+    "hash": "2c8bad782c5c2e457c5decbbdb34c5d0",
     "packages": [
         {
             "name": "dg/adminer-custom",
@@ -27,29 +27,58 @@
         },
         {
             "name": "janmarek/webloader",
-            "version": "2.2.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/janmarek/WebLoader.git",
-                "reference": "5e62831fe7ba5779b97ebd0c23439dbcef80d102"
+                "reference": "253c81f56eccd30069f912f1f4801e54c58ef164"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/janmarek/WebLoader/zipball/5e62831fe7ba5779b97ebd0c23439dbcef80d102",
-                "reference": "5e62831fe7ba5779b97ebd0c23439dbcef80d102",
+                "url": "https://api.github.com/repos/janmarek/WebLoader/zipball/253c81f56eccd30069f912f1f4801e54c58ef164",
+                "reference": "253c81f56eccd30069f912f1f4801e54c58ef164",
                 "shasum": ""
             },
             "require": {
-                "nette/nette": "~2.0@rc"
+                "nette/application": "~2.2@dev",
+                "nette/di": "~2.2@dev",
+                "nette/utils": "~2.2@dev"
             },
             "require-dev": {
+                "jakub-onderka/php-parallel-lint": "~0.7",
+                "latte/latte": "~2.2@dev",
+                "leafo/lessphp": "~0.4",
+                "leafo/scssphp": "~0.1",
                 "mockery/mockery": "0.7.*",
-                "phpunit/phpunit": "3.7.*"
+                "nette/bootstrap": "~2.2@dev",
+                "nette/caching": "~2.2@dev",
+                "nette/component-model": "~2.2@dev",
+                "nette/database": "~2.2@dev",
+                "nette/deprecated": "~2.2@dev",
+                "nette/finder": "~2.2@dev",
+                "nette/forms": "~2.2@dev",
+                "nette/http": "~2.2@dev",
+                "nette/mail": "~2.2@dev",
+                "nette/neon": "~2.2@dev",
+                "nette/php-generator": "~2.2@dev",
+                "nette/reflection": "~2.2@dev",
+                "nette/robot-loader": "~2.2@dev",
+                "nette/safe-stream": "~2.2@dev",
+                "nette/security": "~2.2@dev",
+                "nette/tokenizer": "~2.2@dev",
+                "phpunit/phpunit": "3.7.*",
+                "tracy/tracy": "~2.2@dev"
             },
             "suggest": {
-                "leafo/lessphp": "Lessphp is a composer for LESS written in PHP."
+                "leafo/lessphp": "Lessphp is a composer for LESS written in PHP.",
+                "leafo/scssphp": "Scssphp is a composer for SCSS written in PHP."
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.3-dev"
+                }
+            },
             "autoload": {
                 "psr-0": {
                     "WebLoader": ""
@@ -62,9 +91,7 @@
             "authors": [
                 {
                     "name": "Jan Marek",
-                    "email": "mail@janmarek.net",
-                    "homepage": "http://www.janmarek.net/",
-                    "role": "Author"
+                    "email": "mail@janmarek.net"
                 }
             ],
             "description": "Tool for loading or deploying CSS and JS files into web pages",
@@ -76,7 +103,7 @@
                 "nette",
                 "webloader"
             ],
-            "time": "2014-01-01 16:54:25"
+            "time": "2014-10-12 23:50:23"
         },
         {
             "name": "latte/latte",
@@ -549,6 +576,61 @@
             "time": "2014-08-24 22:56:02"
         },
         {
+            "name": "nette/deprecated",
+            "version": "v2.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nette/deprecated.git",
+                "reference": "9920ea66f559dd49bfb3a03238ca59f037ba7723"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nette/deprecated/zipball/9920ea66f559dd49bfb3a03238ca59f037ba7723",
+                "reference": "9920ea66f559dd49bfb3a03238ca59f037ba7723",
+                "shasum": ""
+            },
+            "require-dev": {
+                "latte/latte": "~2.2",
+                "nette/application": "~2.2",
+                "nette/bootstrap": "~2.2",
+                "nette/caching": "~2.2",
+                "nette/forms": "~2.2",
+                "nette/mail": "~2.2",
+                "nette/safe-stream": "~2.2",
+                "nette/tester": "~1.1",
+                "nette/utils": "~2.2",
+                "tracy/tracy": "~2.2"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ],
+                "files": [
+                    "src/shortcuts.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause",
+                "GPL-2.0",
+                "GPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "David Grudl",
+                    "homepage": "http://davidgrudl.com"
+                },
+                {
+                    "name": "Nette Community",
+                    "homepage": "http://nette.org/contributors"
+                }
+            ],
+            "description": "APIs and features removed from Nette Framework",
+            "homepage": "http://nette.org",
+            "time": "2014-08-26 14:04:54"
+        },
+        {
             "name": "nette/di",
             "version": "v2.2.1",
             "source": {
@@ -861,44 +943,50 @@
         },
         {
             "name": "nette/nette",
-            "version": "v2.2.3",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/nette.git",
-                "reference": "9103e22382a990d74a72caccee2e6a2fd8ca9f1a"
+                "reference": "4203bd23672f565a6eb427ff8c297f57f09c4290"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/nette/zipball/9103e22382a990d74a72caccee2e6a2fd8ca9f1a",
-                "reference": "9103e22382a990d74a72caccee2e6a2fd8ca9f1a",
+                "url": "https://api.github.com/repos/nette/nette/zipball/4203bd23672f565a6eb427ff8c297f57f09c4290",
+                "reference": "4203bd23672f565a6eb427ff8c297f57f09c4290",
                 "shasum": ""
             },
             "require": {
-                "latte/latte": "2.2.3",
-                "nette/application": "2.2.2",
-                "nette/bootstrap": "2.2.2",
-                "nette/caching": "2.2.1",
-                "nette/component-model": "2.2.0",
-                "nette/database": "2.2.2",
-                "nette/di": "2.2.1",
-                "nette/finder": "2.2.0",
-                "nette/forms": "2.2.2",
-                "nette/http": "2.2.1",
-                "nette/mail": "2.2.2",
-                "nette/neon": "2.2.2",
-                "nette/php-generator": "2.2.1",
-                "nette/reflection": "2.2.0",
-                "nette/robot-loader": "2.2.1",
-                "nette/safe-stream": "2.2.0",
-                "nette/security": "2.2.0",
-                "nette/tokenizer": "2.2.0",
-                "nette/utils": "2.2.2",
-                "tracy/tracy": "2.2.3"
+                "latte/latte": ">=2.2.0",
+                "nette/application": ">=2.2.0",
+                "nette/bootstrap": ">=2.2.0",
+                "nette/caching": ">=2.2.0",
+                "nette/component-model": ">=2.2.0",
+                "nette/database": ">=2.2.0",
+                "nette/deprecated": ">=2.2.0",
+                "nette/di": ">=2.2.0",
+                "nette/finder": ">=2.2.0",
+                "nette/forms": ">=2.2.0",
+                "nette/http": ">=2.2.0",
+                "nette/mail": ">=2.2.0",
+                "nette/neon": ">=2.2.0",
+                "nette/php-generator": ">=2.2.0",
+                "nette/reflection": ">=2.2.0",
+                "nette/robot-loader": ">=2.2.0",
+                "nette/safe-stream": ">=2.2.0",
+                "nette/security": ">=2.2.0",
+                "nette/tokenizer": ">=2.2.0",
+                "nette/utils": ">=2.2.0",
+                "tracy/tracy": ">=2.2.0"
             },
             "require-dev": {
-                "nette/tester": "~1.1"
+                "nette/tester": "~1.3"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.3-dev"
+                }
+            },
             "autoload": {
                 "classmap": [
                     "Nette/"
@@ -934,7 +1022,7 @@
                 "mvc",
                 "templating"
             ],
-            "time": "2014-08-27 22:35:43"
+            "time": "2014-10-15 22:18:40"
         },
         {
             "name": "nette/php-generator",
@@ -1293,65 +1381,6 @@
             "time": "2014-08-24 23:29:12"
         },
         {
-            "name": "nextras/forms",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/nextras/forms.git",
-                "reference": "db4facd7d76bef24984f415baac3f079326d765d"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/nextras/forms/zipball/db4facd7d76bef24984f415baac3f079326d765d",
-                "reference": "db4facd7d76bef24984f415baac3f079326d765d",
-                "shasum": ""
-            },
-            "require": {
-                "nette/application": "~2.2",
-                "nette/component-model": "~2.2",
-                "nette/forms": "~2.2",
-                "nette/utils": "~2.2",
-                "php": "~5.4"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.4-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Nextras\\Forms\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause",
-                "GPL-2.0",
-                "GPL-3.0"
-            ],
-            "authors": [
-                {
-                    "name": "David Grudl",
-                    "homepage": "http://davidgrudl.com"
-                },
-                {
-                    "name": "Nextras Community",
-                    "homepage": "https://github.com/nextras/forms/graphs/contributors"
-                },
-                {
-                    "name": "Jan Skrasek",
-                    "homepage": "http://jan.skrasek.com"
-                }
-            ],
-            "description": "Extra form components for Nette Framework.",
-            "keywords": [
-                "form",
-                "nette"
-            ],
-            "time": "2014-09-27 21:59:24"
-        },
-        {
             "name": "o5/grido",
             "version": "2.0.3",
             "source": {
@@ -1569,16 +1598,16 @@
     "packages-dev": [
         {
             "name": "jakub-onderka/php-parallel-lint",
-            "version": "v0.7.1",
+            "version": "v0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/JakubOnderka/PHP-Parallel-Lint.git",
-                "reference": "e2d16ef3f674a70f2752d393fe78519e219bf0d8"
+                "reference": "2b242dcdbdd7369d2a746518ac31bb30c514b728"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JakubOnderka/PHP-Parallel-Lint/zipball/e2d16ef3f674a70f2752d393fe78519e219bf0d8",
-                "reference": "e2d16ef3f674a70f2752d393fe78519e219bf0d8",
+                "url": "https://api.github.com/repos/JakubOnderka/PHP-Parallel-Lint/zipball/2b242dcdbdd7369d2a746518ac31bb30c514b728",
+                "reference": "2b242dcdbdd7369d2a746518ac31bb30c514b728",
                 "shasum": ""
             },
             "require": {
@@ -1586,7 +1615,7 @@
             },
             "require-dev": {
                 "jakub-onderka/php-console-highlighter": "~0.3",
-                "nette/tester": "~1.1"
+                "nette/tester": "~1.3"
             },
             "suggest": {
                 "jakub-onderka/php-console-highlighter": "Highlight syntax in code snippet"
@@ -1612,20 +1641,20 @@
             ],
             "description": "This tool check syntax of PHP files about 20x faster than serial check.",
             "homepage": "https://github.com/JakubOnderka/PHP-Parallel-Lint",
-            "time": "2014-08-19 14:19:52"
+            "time": "2014-10-05 10:19:39"
         },
         {
             "name": "nette/tester",
-            "version": "v1.3.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/tester.git",
-                "reference": "73e9511cb0bd03efdba398c00e91fac8b22edde7"
+                "reference": "ec2e8df903d955d8aeb238af74acf2d9f04ce2b6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/tester/zipball/73e9511cb0bd03efdba398c00e91fac8b22edde7",
-                "reference": "73e9511cb0bd03efdba398c00e91fac8b22edde7",
+                "url": "https://api.github.com/repos/nette/tester/zipball/ec2e8df903d955d8aeb238af74acf2d9f04ce2b6",
+                "reference": "ec2e8df903d955d8aeb238af74acf2d9f04ce2b6",
                 "shasum": ""
             },
             "require": {
@@ -1668,7 +1697,7 @@
                 "testing",
                 "unit"
             ],
-            "time": "2014-09-27 10:42:19"
+            "time": "2014-10-17 11:10:42"
         },
         {
             "name": "ondrs/ftp-deployment",
@@ -1711,22 +1740,20 @@
             "time": "2013-06-21 14:31:58"
         }
     ],
-    "aliases": [
-
-    ],
+    "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
+        "nette/nette": 20,
         "leafo/lessphp": 20,
+        "janmarek/webloader": 20,
         "ondrs/webloader-filters": 20,
         "ondrs/upload-manager": 20,
-        "nextras/forms": 20,
+        "nette/tester": 20,
         "ondrs/ftp-deployment": 20
     },
     "prefer-stable": false,
     "platform": {
         "php": ">= 5.4.0"
     },
-    "platform-dev": [
-
-    ]
+    "platform-dev": []
 }
