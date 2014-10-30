@@ -7,13 +7,10 @@ use WebLoader\Nette\CssLoader;
 use WebLoader\Nette\JavaScriptLoader;
 
 
-/**
- * Base presenter for all application presenters.
- */
 abstract class BasePresenter extends \App\Presenters\BasePresenter
 {
 
-    /** @var \WebLoader\LoaderFactory @inject */
+    /** @var \WebLoader\Nette\LoaderFactory @inject */
     public $webLoader;
 
 

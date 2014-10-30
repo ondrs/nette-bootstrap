@@ -17,7 +17,7 @@ use WebLoader\Nette\JavaScriptLoader;
 abstract class BasePresenter extends \App\Presenters\BasePresenter
 {
 
-    /** @var \WebLoader\LoaderFactory @inject */
+    /** @var \WebLoader\Nette\LoaderFactory @inject */
     public $webLoader;
 
     /** @var \App\AdminModule\Factory\GridFactory @inject */

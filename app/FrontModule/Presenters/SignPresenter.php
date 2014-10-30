@@ -6,9 +6,6 @@ use Nette,
 	App\Model;
 
 
-/**
- * Sign in/out presenters.
- */
 class SignPresenter extends BasePresenter
 {
 
