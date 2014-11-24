@@ -38,6 +38,7 @@ nette:
 
 extensions:
     webloader: WebLoader\Nette\Extension
+    ajaxHistory: VojtechDobes\NetteAjax\HistoryExtension
     uploadManager: ondrs\UploadManager\DI\Extension
 
 uploadManager:

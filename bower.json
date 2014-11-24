@@ -7,7 +7,7 @@
     "dropzone": "~3.10.2",
     "ondrs-common.css": "latest",
     "less-elements": "https://github.com/dmitryf/elements.git",
-    "nette.ajax.js": "git://github.com/vojtech-dobes/nette.ajax.js",
+    "nette.ajax.js": "~2.0.0",
     "jquery": "~1.11.0",
     "bootstrap": "~3.2.0"
   }

@@ -14,7 +14,6 @@ webloader:
             files:
                 - %wwwDir%/bower_components/ondrs-common.css/common.css
                 - %wwwDir%/bower_components/bootstrap/dist/css/bootstrap.css    # TODO: include just necessary less components
-                - %wwwDir%/bower_components/dropzone/downloads/css/dropzone.css
                 - %wwwDir%/styles/main.less
             filters:
                 - ondrs\WebLoaderFilters\Filters::cssMin
@@ -53,8 +52,7 @@ webloader:
             files:
                 - %wwwDir%/bower_components/jquery/dist/jquery.js
                 - %wwwDir%/bower_components/nette.ajax.js/nette.ajax.js
-                - %wwwDir%/bower_components/nette.ajax.js/history/history.ajax.js
-                - %wwwDir%/bower_components/nette.ajax.js/extensions/scrollTo.ajax.js
+                - %appDir%/../vendor/vojtech-dobes/nette-ajax-history/client-side/history.ajax.js
                 - %appDir%/../vendor/nette/forms/src/assets/netteForms.js
                 - front/main.js
             filters:

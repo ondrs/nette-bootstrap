@@ -21,6 +21,7 @@
     "leafo/lessphp": "0.4.*@dev",
     "o5/grido": "~2.0",
     "janmarek/webloader": "2.3.*@dev",
+    "vojtech-dobes/nette-ajax-history": "1.0.0",
     "ondrs/webloader-filters": "dev-master",
     "ondrs/upload-manager": "dev-master"
   },
