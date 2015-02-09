@@ -9,6 +9,6 @@
     "less-elements": "https://github.com/dmitryf/elements.git",
     "nette.ajax.js": "~2.0.0",
     "jquery": "~1.11.0",
-    "bootstrap": "~3.2.0"
+    "bootstrap": "~3.3.0"
   }
 }
