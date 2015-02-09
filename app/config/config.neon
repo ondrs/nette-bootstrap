@@ -8,6 +8,8 @@ includes:
   - webloader.neon
 
 parameters:
+    bowerDir: %wwwDir%/bower_components
+    webloaderDebug: false
 
 
 php:

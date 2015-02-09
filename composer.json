@@ -14,9 +14,15 @@
       "homepage": "http://nette.org/contributors"
     }
   ],
+  "repositories": [
+    {
+      "url": "https://github.com/ondrs/WebLoader.git",
+      "type": "git"
+    }
+  ],
   "require": {
     "php": ">= 5.4.0",
-    "nette/nette": "2.3.*@dev",
+    "nette/nette": "2.2.*@dev",
     "dg/adminer-custom": "~1.5",
     "leafo/lessphp": "0.4.*@dev",
     "o5/grido": "~2.0",

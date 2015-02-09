@@ -11,9 +11,10 @@ webloader:
                 - @lessFilter
 
         front:
+            debug: %webloaderDebug%
             files:
-                - %wwwDir%/bower_components/ondrs-common.css/common.css
-                - %wwwDir%/bower_components/bootstrap/dist/css/bootstrap.css    # TODO: include just necessary less components
+                - %bowerDir%/ondrs-common.css/common.css
+                - %bowerDir%/bootstrap/dist/css/bootstrap.css    # TODO: include just necessary less components
                 - %wwwDir%/styles/main.less
             filters:
                 - ondrs\WebLoaderFilters\Filters::cssMin
@@ -22,24 +23,24 @@ webloader:
     js:
         admin:
             files:
-                - %wwwDir%/bower_components/unicorn-admin/html/js/excanvas.min.js
-                - %wwwDir%/bower_components/unicorn-admin/html/js/jquery.min.js
-                - %wwwDir%/bower_components/unicorn-admin/html/js/jquery-ui.custom.js
-                - %wwwDir%/bower_components/unicorn-admin/html/js/bootstrap.min.js
-                - %wwwDir%/bower_components/unicorn-admin/html/js/bootstrap-colorpicker.js
-                - %wwwDir%/bower_components/unicorn-admin/html/js/bootstrap-datepicker.js
-                - %wwwDir%/bower_components/unicorn-admin/html/js/bootbox.min.js
-                - %wwwDir%/bower_components/unicorn-admin/html/js/select2.min.js
+                - %bowerDir%/unicorn-admin/html/js/excanvas.min.js
+                - %bowerDir%/unicorn-admin/html/js/jquery.min.js
+                - %bowerDir%/unicorn-admin/html/js/jquery-ui.custom.js
+                - %bowerDir%/unicorn-admin/html/js/bootstrap.min.js
+                - %bowerDir%/unicorn-admin/html/js/bootstrap-colorpicker.js
+                - %bowerDir%/unicorn-admin/html/js/bootstrap-datepicker.js
+                - %bowerDir%/unicorn-admin/html/js/bootbox.min.js
+                - %bowerDir%/unicorn-admin/html/js/select2.min.js
 
-                - %wwwDir%/bower_components/unicorn-admin/html/js/jquery.icheck.min.js
-                - %wwwDir%/bower_components/unicorn-admin/html/js/jquery.flot.min.js
-                - %wwwDir%/bower_components/unicorn-admin/html/js/jquery.sparkline.min.js
-                - %wwwDir%/bower_components/unicorn-admin/html/js/jquery.nicescroll.min.js
+                - %bowerDir%/unicorn-admin/html/js/jquery.icheck.min.js
+                - %bowerDir%/unicorn-admin/html/js/jquery.flot.min.js
+                - %bowerDir%/unicorn-admin/html/js/jquery.sparkline.min.js
+                - %bowerDir%/unicorn-admin/html/js/jquery.nicescroll.min.js
 
-                - %wwwDir%/bower_components/unicorn-admin/html/js/unicorn.form_common.js
-                - %wwwDir%/bower_components/unicorn-admin/html/js/unicorn.js
+                - %bowerDir%/unicorn-admin/html/js/unicorn.form_common.js
+                - %bowerDir%/unicorn-admin/html/js/unicorn.js
 
-                - %wwwDir%/bower_components/dropzone/downloads/dropzone.min.js
+                - %bowerDir%/dropzone/downloads/dropzone.min.js
 
                 - %appDir%/../vendor/o5/grido/client-side/grido.js
                 - %appDir%/../vendor/nette/forms/src/assets/netteForms.js
@@ -50,8 +51,8 @@ webloader:
 
         front:
             files:
-                - %wwwDir%/bower_components/jquery/dist/jquery.js
-                - %wwwDir%/bower_components/nette.ajax.js/nette.ajax.js
+                - %bowerDir%/jquery/dist/jquery.js
+                - %bowerDir%/nette.ajax.js/nette.ajax.js
                 - %appDir%/../vendor/vojtech-dobes/nette-ajax-history/client-side/history.ajax.js
                 - %appDir%/../vendor/nette/forms/src/assets/netteForms.js
                 - front/main.js
