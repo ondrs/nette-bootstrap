@@ -14,14 +14,18 @@ abstract class BasePresenter extends \App\Presenters\BasePresenter
     public $webLoader;
 
 
-
-    /** @return CssLoader */
+    /**
+     * @return CssLoader
+     */
     protected function createComponentCss()
     {
         return $this->webLoader->createCssLoader('front');
     }
 
-    /** @return JavaScriptLoader */
+
+    /**
+     * @return JavaScriptLoader
+     */
     protected function createComponentJs()
     {
         return $this->webLoader->createJavaScriptLoader('front');
