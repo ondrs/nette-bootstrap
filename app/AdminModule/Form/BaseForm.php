@@ -6,6 +6,7 @@ namespace App\AdminModule\Form;
 use Nette\Application\UI\Form;
 use Nette\Database\Context;
 use Nette\Database\Table\Selection;
+use Nette\Utils\ArrayHash;
 use Tracy\Debugger;
 
 
@@ -18,6 +19,19 @@ abstract class BaseForm extends Form
     /** @var \Nette\Database\Table\Selection */
     protected $selection;
 
+    /** @var array of callbacks */
+    public $beforePrepare = [];
+    public $afterPrepare = [];
+
+    public $beforeProcess = [];
+    public $afterProcess = [];
+
+    public $beforeUpdate = [];
+    public $afterUpdate = [];
+
+    public $beforeInsert = [];
+    public $afterInsert = [];
+
 
     /**
      * @param Context $db
@@ -29,6 +43,8 @@ abstract class BaseForm extends Form
 
         $this->db = $db;
         $this->selection = $selection;
+
+        $this->beforePrepare($this);
 
         $this->prepare();
 
@@ -49,6 +65,8 @@ abstract class BaseForm extends Form
         // make form and controls compatible with Twitter Bootstrap
         $this->getElementPrototype()->class('form-horizontal');
 
+        $this->afterPrepare($this);
+
     }
 
 
@@ -63,26 +81,45 @@ abstract class BaseForm extends Form
      */
     public function process()
     {
+        /** @var ArrayHash $values */
         $values = $this->values;
 
         try {
 
+            $this->beforeProcess($this, $values);
+
             if (isset($values->id)) {
 
-                $id = $values->id;
-                unset($values->id);
+                $this->beforeUpdate($this, $values);
 
-                $this->selection->wherePrimary($id)->update($values);
+                $arr = (array)$values;;
+                unset($arr['id']);
+
+                $row = $this->selection
+                    ->wherePrimary($values->id)
+                    ->fetch();
+
+                $row->update($arr);
+
+                $this->afterUpdate($row, $this, $values);
 
             } else {
-                $this->selection->insert($values);
+
+                $this->beforeInsert($this, $values);
+
+                $row = $this->selection->insert($values);
+
+                $this->afterInsert($row, $this, $values);
             }
+
+            $this->afterProcess($row, $this, $values);
 
         } catch (\PDOException $e) {
             $this->addError($e->getMessage());
             dump($e);
             Debugger::log($e);
         }
+
     }
 
 }
