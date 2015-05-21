@@ -55,8 +55,6 @@ class GridFactory
             throw new GridNotExistsException("Grid class $className does not exist!");
         }
 
-        $presenter = $this->presenter;
-
         /** @var Grid $grid */
         $grid = new $className($this->db, $selection);
 
@@ -70,12 +68,12 @@ class GridFactory
             ->setIcon('pencil');
 
         $grid->addActionHref('hide', 'Skrýt')
-            ->setCustomRender(function ($row) use ($presenter) {
+            ->setCustomRender(function ($row) {
 
                 $icon = Html::el('i');
 
                 $button = Html::el('a')
-                    ->href($presenter->link('hide!', $row->id))
+                    ->href($this->presenter->link('hide!', $row->id))
                     ->title('Skrýt');
 
                 if (isset($row->visible)) {
