@@ -1,24 +1,39 @@
 <?php
 
-use Nette\Forms\Container;
-use Nextras\Forms\Controls;
-
 require __DIR__ . '/../vendor/autoload.php';
 
-$configurator = new Nette\Configurator;
 
-//$configurator->setDebugMode('23.75.345.200'); // enable for your remote IP
-$configurator->enableDebugger(__DIR__ . '/../log');
+/**
+ * @param array $extraConfigs
+ * @param array $params
+ * @return \Nette\DI\Container
+ */
+$containerFactory = function (array $extraConfigs = [], array $params = []) {
 
-$configurator->setTempDirectory(__DIR__ . '/../temp');
+    $configurator = new Nette\Configurator;
 
-$configurator->createRobotLoader()
-	->addDirectory(__DIR__)
-	->register();
+    //$configurator->setDebugMode('23.75.345.200'); // enable for your remote IP
+    $configurator->enableDebugger(__DIR__ . '/../log');
 
-$configurator->addConfig(__DIR__ . '/config/config.neon');
-$configurator->addConfig(__DIR__ . '/config/config.local.neon');
+    $configurator->setTempDirectory(__DIR__ . '/../temp');
 
-$container = $configurator->createContainer();
+    $configurator->addParameters($params);
 
-return $container;
+    $configurator->createRobotLoader()
+        ->addDirectory(__DIR__)
+        ->register();
+
+    foreach ($extraConfigs as $config) {
+        $configurator->addConfig($config);
+    }
+
+    $configurator->addConfig(__DIR__ . '/config/config.neon');
+    $configurator->addConfig(__DIR__ . '/config/config.local.neon');
+
+    $container = $configurator->createContainer();
+
+    return $container;
+};
+
+
+return $containerFactory;

@@ -23,7 +23,8 @@
     "oyejorge/less.php": "~1.7",
     "vojtech-dobes/nette-ajax-history": "2.0.0",
     "ondrs/webloader-filters": "dev-master",
-    "ondrs/upload-manager": "0.1.*"
+    "ondrs/upload-manager": "0.1.*",
+    "nextras/migrations": "^3.0"
   },
   "require-dev": {
     "nette/tester": "~1.4.",
