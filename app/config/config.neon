@@ -66,7 +66,7 @@ services:
     - App\AdminModule\Components\Menu\MenuGenerator(%appDir%/config/admin.menu.neon)
     - App\AdminModule\Components\Menu\MenuControlFactory
 
-    - App\AdminModule\Components\Dropzone\Control
+    - App\AdminModule\Components\Dropzone\DropzoneControlFactory
 
 
     #- App\Model\UserManager

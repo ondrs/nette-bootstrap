@@ -3,12 +3,14 @@
 namespace App\AdminModule\Components\Dropzone;
 
 
+use Nette\Application\UI\Control;
 use Nette\Database\Context;
 use Nette\Http\Request;
 use Nette\Utils\Finder;
 use ondrs\UploadManager\Upload;
 
-class Control extends \Nette\Application\UI\Control
+
+class DropzoneControl extends Control
 {
 
     /** @var \ondrs\UploadManager\Upload */

@@ -4,7 +4,6 @@
 namespace App\AdminModule\Presenters;
 
 
-
 class ExamplePresenter extends BasePresenter
 {
 

@@ -4,32 +4,40 @@
 namespace App\AdminModule\Presenters;
 
 
+use App\AdminModule\Components\Dropzone\DropzoneControl;
+use App\AdminModule\Components\Dropzone\DropzoneControlFactory;
 use App\AdminModule\Components\Menu\MenuControlFactory;
+use App\AdminModule\Factory\FormFactory;
+use App\AdminModule\Factory\GridFactory;
 use Nette\Database\SqlLiteral;
+use ondrs\UploadManager\Upload;
 use Tracy\Debugger;
 use WebLoader\Nette\CssLoader;
 use WebLoader\Nette\JavaScriptLoader;
+use WebLoader\Nette\LoaderFactory;
+
 
 abstract class BasePresenter extends \App\Presenters\BasePresenter
 {
 
-    /** @var \WebLoader\Nette\LoaderFactory @inject */
+    /** @var LoaderFactory @inject */
     public $webLoader;
 
-    /** @var \App\AdminModule\Factory\GridFactory @inject */
+    /** @var GridFactory @inject */
     public $gridFactory;
 
-    /** @var \App\AdminModule\Factory\FormFactory @inject */
+    /** @var FormFactory @inject */
     public $formFactory;
 
     /** @var MenuControlFactory @inject */
     public $menuControlFactory;
 
-    /** @var \ondrs\UploadManager\Upload @inject */
+    /** @var  DropzoneControlFactory @inject */
+    public $dropzoneControlFactory;
+
+    /** @var Upload @inject */
     public $upload;
 
-    /** @var \App\AdminModule\Components\Dropzone\Control @inject */
-    public $dropzoneControl;
 
     /** @var string */
     protected $presenterTitle;
@@ -116,11 +124,12 @@ abstract class BasePresenter extends \App\Presenters\BasePresenter
      */
     public function actionCreate()
     {
-        $result = $this->db->query('SHOW TABLE STATUS LIKE ?', $this->tableName)
+        $result = $this->db
+            ->query('SHOW TABLE STATUS LIKE ?', $this->tableName)
             ->fetch();
 
         $dir = $this->tableName . '/' . $result->Auto_increment;
-        $this->dropzoneControl->setDir($dir);
+        $this['dropzone']->setDir($dir);
 
         $this->setView('detail');
     }
@@ -143,7 +152,7 @@ abstract class BasePresenter extends \App\Presenters\BasePresenter
         $this['form']->setDefaults($row);
 
         $dir = $this->tableName . '/' . $id;
-        $this->dropzoneControl->setDir($dir);
+        $this['dropzone']->setDir($dir);
 
         $this->setView('detail');
     }
@@ -199,16 +208,16 @@ abstract class BasePresenter extends \App\Presenters\BasePresenter
 
 
     /**
-     * @return \App\AdminModule\Components\Dropzone\Control
+     * @return DropzoneControl
      */
     protected function createComponentDropzone()
     {
-        return $this->dropzoneControl;
+        return $this->dropzoneControlFactory->create();
     }
 
 
     /**
-     * @return \App\AdminModule\Menu\MenuControl
+     * @return \App\AdminModule\Components\Menu\MenuControl
      */
     protected function createComponentMenu()
     {
