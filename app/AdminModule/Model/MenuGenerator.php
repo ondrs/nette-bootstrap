@@ -1,9 +1,5 @@
 <?php
-/**
- * @author: Ondřej Plšek
- * @email: plsek.o@gmai.com
- * @date: 31.3.13
- */
+
 
 namespace App\AdminModule\Model;
 

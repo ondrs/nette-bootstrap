@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Ondra
- * Date: 28.8.14
- * Time: 21:29
- */
+
 
 namespace App\AdminModule\Form;
 

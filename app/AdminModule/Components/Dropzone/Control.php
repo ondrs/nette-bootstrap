@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Ondra
- * Date: 7.9.14
- * Time: 18:53
- */
 
 namespace App\AdminModule\Components\Dropzone;
 
