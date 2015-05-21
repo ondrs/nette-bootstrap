@@ -4,6 +4,7 @@ namespace App\AdminModule\Factory;
 
 
 use App\GridNotExistsException;
+use App\InvalidArgumentException;
 use Grido\Translations\FileTranslator;
 use Nette\Database\Context;
 use Nette\Database\Table\Selection;
@@ -42,7 +43,7 @@ class GridFactory
 
 
     /**
-     * @param $name
+     * @param string $name
      * @param Selection $selection
      * @return Grid
      * @throws GridNotExistsException
@@ -55,11 +56,14 @@ class GridFactory
             throw new GridNotExistsException("Grid class $className does not exist!");
         }
 
+        if($this->presenter === NULL) {
+            throw new InvalidArgumentException('Presenter must be set!');
+        }
+
         /** @var Grid $grid */
         $grid = new $className($this->db, $selection);
 
         $grid->setDefaultPerPage(100);
-
 
         $grid->setModel($selection)
             ->setTranslator(new FileTranslator('cs'));
@@ -78,11 +82,13 @@ class GridFactory
 
                 if (isset($row->visible)) {
                     $icon->class('fa fa-eye');
+
                     if ($row->visible) {
                         $button->class('btn btn-default btn-xs btn-mini');
                     } else {
                         $button->class('btn btn-danger btn-xs btn-mini');
                     }
+
                     $button->setHtml($icon);
 
                 } else {
