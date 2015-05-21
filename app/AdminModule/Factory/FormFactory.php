@@ -4,6 +4,7 @@ namespace App\AdminModule\Factory;
 
 
 use App\FormNotExistsException;
+use App\InvalidArgumentException;
 use Nette\Database\Context;
 use Nette\Database\Table\Selection;
 use Nette\Application\UI\Presenter;
@@ -38,13 +39,13 @@ class FormFactory
 
 
     /**
-     * @param $name
+     * @param string $name
      * @param Selection $selection
-     * @param bool $registerCallback
+     * @param bool $processForm
      * @return mixed
      * @throws FormNotExistsException
      */
-    public function create($name, Selection $selection, $registerCallback = TRUE)
+    public function create($name, Selection $selection, $processForm = TRUE)
     {
         $className = '\\App\\AdminModule\\Form\\' . $name;
 
@@ -52,11 +53,15 @@ class FormFactory
             throw new FormNotExistsException("Form class $className does not exist!");
         }
 
+        if ($this->presenter === NULL) {
+            throw new InvalidArgumentException('Presenter must be set!');
+        }
+
         $form = new $className($this->db, $selection);
 
-        if($registerCallback) {
+        if ($processForm) {
 
-            $form->onSuccess[] = function ($form)  {
+            $form->onSuccess[] = function ($form) {
 
                 $form->process();
 
@@ -67,8 +72,6 @@ class FormFactory
 
             };
         }
-
-
 
         return $form;
     }
