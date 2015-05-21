@@ -92,7 +92,7 @@ abstract class BaseForm extends Form
 
                 $this->beforeUpdate($this, $values);
 
-                $arr = (array)$values;;
+                $arr = (array)$values;
                 unset($arr['id']);
 
                 $row = $this->selection
