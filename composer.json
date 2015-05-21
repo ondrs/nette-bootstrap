@@ -14,25 +14,19 @@
       "homepage": "http://nette.org/contributors"
     }
   ],
-  "repositories": [
-    {
-      "url": "https://github.com/ondrs/WebLoader.git",
-      "type": "git"
-    }
-  ],
   "require": {
     "php": ">= 5.4.0",
-    "nette/nette": "2.2.*@dev",
+    "nette/nette": "~2.3",
     "dg/adminer-custom": "~1.5",
-    "leafo/lessphp": "0.4.*@dev",
     "o5/grido": "~2.0",
-    "janmarek/webloader": "2.3.*@dev",
-    "vojtech-dobes/nette-ajax-history": "1.0.0",
+    "janmarek/webloader": "~2.4",
+    "oyejorge/less.php": "~1.7",
+    "vojtech-dobes/nette-ajax-history": "2.0.0",
     "ondrs/webloader-filters": "dev-master",
-    "ondrs/upload-manager": "dev-master"
+    "ondrs/upload-manager": "0.1.*"
   },
   "require-dev": {
-    "nette/tester": "1.3.*@dev",
+    "nette/tester": "~1.4.",
     "jakub-onderka/php-parallel-lint": "0.8",
     "ondrs/ftp-deployment": "dev-master"
   },
