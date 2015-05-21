@@ -11,7 +11,6 @@ webloader:
                 - @lessFilter
 
         front:
-            debug: %webloaderDebug%
             files:
                 - %bowerDir%/ondrs-common.css/common.css
                 - %bowerDir%/bootstrap/dist/css/bootstrap.css    # TODO: include just necessary less components

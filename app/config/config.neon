@@ -9,7 +9,6 @@ includes:
 
 parameters:
     bowerDir: %wwwDir%/bower_components
-    webloaderDebug: false
 
 
 php:
@@ -17,25 +16,24 @@ php:
     zlib.output_compression: yes
 
 
-nette:
-    application:
-        errorPresenter: Error
-        mapping:
-            *: App\*Module\Presenters\*Presenter
+application:
+    errorPresenter: Error
+    mapping:
+        *: App\*Module\Presenters\*Presenter
 
-    session:
-        expiration: 14 days
+session:
+    expiration: 14 days
 
-    database:
-        dsn: 'mysql:host=%database.host%;dbname=%database.database%'
-        user: %database.user%
-        password: %database.password%
-        options:
-            lazy: yes
+database:
+    dsn: 'mysql:host=%database.host%;dbname=%database.database%'
+    user: %database.user%
+    password: %database.password%
+    options:
+        lazy: yes
 
-    security:
-        users:
-            sandbox: sandbox
+security:
+    users:
+        sandbox: sandbox
 
 
 extensions:

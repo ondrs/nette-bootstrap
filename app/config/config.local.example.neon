@@ -5,3 +5,8 @@ parameters:
         database: 'test'
         user: 'root'
         password: ''
+
+webloader:
+    css:
+        front:
+            debug: true
