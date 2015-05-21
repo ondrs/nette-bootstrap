@@ -4,6 +4,7 @@
 namespace App\AdminModule\Presenters;
 
 
+use App\AdminModule\Components\Menu\MenuControlFactory;
 use Nette\Database\SqlLiteral;
 use Tracy\Debugger;
 use WebLoader\Nette\CssLoader;
@@ -21,8 +22,8 @@ abstract class BasePresenter extends \App\Presenters\BasePresenter
     /** @var \App\AdminModule\Factory\FormFactory @inject */
     public $formFactory;
 
-    /** @var \App\AdminModule\Model\MenuGenerator @inject */
-    public $menuGenerator;
+    /** @var MenuControlFactory @inject */
+    public $menuControlFactory;
 
     /** @var \ondrs\UploadManager\Upload @inject */
     public $upload;
@@ -106,7 +107,6 @@ abstract class BasePresenter extends \App\Presenters\BasePresenter
             $this->template->setFile($templatesDir . '_' . $this->view . '.latte');
         }
 
-        $this->template->mainMenu = $this->menuGenerator->createMenu();
         $this->template->presenterTitle = $this->presenterTitle;
     }
 
@@ -204,6 +204,15 @@ abstract class BasePresenter extends \App\Presenters\BasePresenter
     protected function createComponentDropzone()
     {
         return $this->dropzoneControl;
+    }
+
+
+    /**
+     * @return \App\AdminModule\Menu\MenuControl
+     */
+    protected function createComponentMenu()
+    {
+        return $this->menuControlFactory->create();
     }
 
 

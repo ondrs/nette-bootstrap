@@ -62,7 +62,10 @@ services:
 
     - App\AdminModule\Factory\GridFactory
     - App\AdminModule\Factory\FormFactory
-    - App\AdminModule\Model\MenuGenerator(%appDir%/config/admin.menu.neon)
+
+    - App\AdminModule\Components\Menu\MenuGenerator(%appDir%/config/admin.menu.neon)
+    - App\AdminModule\Components\Menu\MenuControlFactory
+
     - App\AdminModule\Components\Dropzone\Control
 
 

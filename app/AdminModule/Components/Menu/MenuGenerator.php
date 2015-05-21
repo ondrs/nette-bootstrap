@@ -1,12 +1,12 @@
 <?php
 
 
-namespace App\AdminModule\Model;
+namespace App\AdminModule\Components\Menu;
 
 
+use App\InvalidArgumentException;
 use Nette\Caching\Cache;
 use Nette\Caching\IStorage;
-use Nette\InvalidArgumentException;
 use Nette\Neon\Neon;
 use Nette\Object;
 
@@ -33,7 +33,7 @@ class MenuGenerator extends Object
             throw new InvalidArgumentException("File $filename does not exists");
         }
 
-        $this->cache = new Cache($cacheStorage, 'Admin');
+        $this->cache = new Cache($cacheStorage, __CLASS__);
     }
 
 

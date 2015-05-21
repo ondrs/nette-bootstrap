@@ -1,0 +1,26 @@
+<ul>
+
+    <li n:foreach="$menuItems as $name => $values"
+        class="{if $presenter->isLinkCurrent($values[current])}active{/if} {ifset $values[submenu]}submenu{/ifset}">
+
+        <a href="{plink $values['link']}">
+            <i class="fa fa-{$values[icon]}"></i>
+            <span>{$name}</span>
+                <span class="label" n:ifset="$values[submenu]">
+                    {count($values[submenu])}
+                </span>
+            <i n:ifset="$values[submenu]" class="arrow fa fa-chevron-right"></i>
+        </a>
+
+        <ul n:ifset="$values[submenu]">
+            <li n:foreach="$values[submenu] as $subName => $subValues"
+                n:class="$presenter->isLinkCurrent($subValues['current']) ? 'active'">
+                <a href="{plink $subValues['link']}">
+                    <span>{$subName}</span>
+                </a>
+            </li>
+        </ul>
+
+    </li>
+
+</ul>
