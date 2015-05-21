@@ -3,7 +3,7 @@
 namespace App\AdminModule\Factory;
 
 
-use Exception;
+use App\GridNotExistsException;
 use Grido\Translations\FileTranslator;
 use Nette\Database\Context;
 use Nette\Database\Table\Selection;
@@ -102,11 +102,5 @@ class GridFactory
 
         return $grid;
     }
-
-}
-
-
-class GridNotExistsException extends Exception
-{
 
 }

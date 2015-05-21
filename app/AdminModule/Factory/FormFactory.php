@@ -3,10 +3,10 @@
 namespace App\AdminModule\Factory;
 
 
+use App\FormNotExistsException;
 use Nette\Database\Context;
 use Nette\Database\Table\Selection;
 use Nette\Application\UI\Presenter;
-use Exception;
 
 
 class FormFactory
@@ -75,8 +75,3 @@ class FormFactory
 
 }
 
-
-class FormNotExistsException extends Exception
-{
-
-}
