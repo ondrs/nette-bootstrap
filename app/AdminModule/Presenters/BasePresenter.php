@@ -128,8 +128,7 @@ abstract class BasePresenter extends \App\Presenters\BasePresenter
             ->query('SHOW TABLE STATUS LIKE ?', $this->tableName)
             ->fetch();
 
-        $dir = $this->tableName . '/' . $result->Auto_increment;
-        $this['dropzone']->setDir($dir);
+        $this['dropzone']->setDir($this->tableName . '/' . $result->Auto_increment);
 
         $this->setView('detail');
     }
@@ -151,8 +150,7 @@ abstract class BasePresenter extends \App\Presenters\BasePresenter
         $this['form']->addHidden('id', $id);
         $this['form']->setDefaults($row);
 
-        $dir = $this->tableName . '/' . $id;
-        $this['dropzone']->setDir($dir);
+        $this['dropzone']->setDir($this->tableName . '/' . $id);
 
         $this->setView('detail');
     }
