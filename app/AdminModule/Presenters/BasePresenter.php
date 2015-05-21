@@ -114,7 +114,7 @@ abstract class BasePresenter extends \App\Presenters\BasePresenter
     /**
      * Default action for adding items
      */
-    public function actionAdd()
+    public function actionCreate()
     {
         $result = $this->db->query('SHOW TABLE STATUS LIKE ?', $this->tableName)
             ->fetch();
