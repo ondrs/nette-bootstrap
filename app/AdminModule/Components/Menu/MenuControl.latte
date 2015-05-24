@@ -1,7 +1,7 @@
 <ul>
 
     <li n:foreach="$menuItems as $name => $values"
-        class="{if $presenter->isLinkCurrent($values[current])}active{/if} {ifset $values[submenu]}submenu{/ifset}">
+        n:class="$presenter->isLinkCurrent($values[current]) ? 'active open', isset($values[submenu]) ? 'submenu'">
 
         <a href="{plink $values['link']}">
             <i class="fa fa-{$values[icon]}"></i>
