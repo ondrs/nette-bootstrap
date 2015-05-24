@@ -163,7 +163,7 @@ class DropzoneControl extends Control
         $this->template->files = $files['files'];
         $this->template->images = $files['images'];
 
-        $this->template->setFile(__DIR__ . '/template.latte');
+        $this->template->setFile(__DIR__ . '/DropzoneControl.latte');
         $this->template->render();
     }
 
