@@ -20,9 +20,6 @@ abstract class BaseForm extends Form
     protected $selection;
 
     /** @var array of callbacks */
-    public $beforePrepare = [];
-    public $afterPrepare = [];
-
     public $beforeProcess = [];
     public $afterProcess = [];
 
@@ -44,8 +41,6 @@ abstract class BaseForm extends Form
         $this->db = $db;
         $this->selection = $selection;
 
-        $this->beforePrepare($this);
-
         $this->prepare();
 
         $this->addSubmit('submit', 'Uložit')
@@ -64,9 +59,6 @@ abstract class BaseForm extends Form
 
         // make form and controls compatible with Twitter Bootstrap
         $this->getElementPrototype()->class('form-horizontal');
-
-        $this->afterPrepare($this);
-
     }
 
 
