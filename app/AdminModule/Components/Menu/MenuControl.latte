@@ -1,7 +1,7 @@
 <ul>
 
     <li n:foreach="$menuItems as $name => $values"
-        n:class="$isCurrent($values[current]) ? 'active open', isset($values[submenu]) ? 'submenu'">
+        n:class="$isCurrent($values[current], isset($values[currentArgs]) ? $values[currentArgs] : []) ? 'active open', isset($values[submenu]) ? 'submenu'">
 
         <a href="{$presenter->link($values['link'], isset($values['linkArgs']) ? $values['linkArgs'] : [])}">
             <i class="fa fa-{$values[icon]}"></i>
@@ -14,7 +14,7 @@
 
         <ul n:ifset="$values[submenu]">
             <li n:foreach="$values[submenu] as $subName => $subValues"
-                n:class="$isCurrent($subValues[current]) ? 'active'">
+                n:class="$isCurrent($subValues[current], isset($subValues[currentArgs]) ? $subValues[currentArgs] : []) ? 'active'">
                 <a href="{$presenter->link($subValues['link'], isset($subValues['linkArgs']) ? $subValues['linkArgs'] : [])}">
                     <span>{$subName}</span>
                 </a>
