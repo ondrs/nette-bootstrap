@@ -20,14 +20,14 @@ abstract class BaseForm extends Form
     protected $selection;
 
     /** @var array of callbacks */
-    public $beforeProcess = [];
-    public $afterProcess = [];
+    public $onBeforeProcess;
+    public $onAfterProcess;
 
-    public $beforeUpdate = [];
-    public $afterUpdate = [];
+    public $onBeforeUpdate;
+    public $onAfterUpdate;
 
-    public $beforeInsert = [];
-    public $afterInsert = [];
+    public $onBeforeInsert;
+    public $onAfterInsert;
 
 
     /**
@@ -78,11 +78,11 @@ abstract class BaseForm extends Form
 
         try {
 
-            $this->beforeProcess($this, $values);
+            $this->onBeforeProcess($this, $values);
 
             if (isset($values->id)) {
 
-                $this->beforeUpdate($this, $values);
+                $this->onBeforeUpdate($this, $values);
 
                 $arr = (array)$values;
                 unset($arr['id']);
@@ -93,18 +93,18 @@ abstract class BaseForm extends Form
 
                 $row->update($arr);
 
-                $this->afterUpdate($row, $this, $values);
+                $this->onAfterUpdate($row, $this, $values);
 
             } else {
 
-                $this->beforeInsert($this, $values);
+                $this->onBeforeInsert($this, $values);
 
                 $row = $this->selection->insert($values);
 
-                $this->afterInsert($row, $this, $values);
+                $this->onAfterInsert($row, $this, $values);
             }
 
-            $this->afterProcess($row, $this, $values);
+            $this->onAfterProcess($row, $this, $values);
 
         } catch (\PDOException $e) {
             $this->addError($e->getMessage());
